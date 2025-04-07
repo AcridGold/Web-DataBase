@@ -1,0 +1,12 @@
+console app:
+
+1.
+rmdir /S /Q cmake-build-debug
+
+2.
+"C:\Program Files (x86)\JetBrains\CLion 2024.3.5\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE="D:/NSU/MyLabs/GITLab/Petrov's GitLab/database-lab/back-end/emscripten_toolchain.cmake" -DCMAKE_MAKE_PROGRAM="C:/Program Files (x86)/JetBrains/CLion 2024.3.5/bin/ninja/win/x64/ninja.exe" -G Ninja -S . -B cmake-build-debug
+
+3.
+"C:\Program Files (x86)\JetBrains\CLion 2024.3.5\bin\cmake\win\x64\bin\cmake.exe" --build cmake-build-debug
+
+В Дебаге собраны .js и .wasm файлы.

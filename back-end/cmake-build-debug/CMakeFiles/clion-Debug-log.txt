@@ -1,0 +1,19 @@
+"C:\Program Files (x86)\JetBrains\CLion 2024.3.5\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Program Files (x86)/JetBrains/CLion 2024.3.5/bin/ninja/win/x64/ninja.exe" -DCMAKE_C_COMPILER=D:/NSU/MyLabs/ADDED_LIBS/emsdk/upstream/emscripten/emcc.bat -DCMAKE_CXX_COMPILER=D:/NSU/MyLabs/ADDED_LIBS/emsdk/upstream/emscripten/em++.bat -DCMAKE_TOOLCHAIN_FILE=D:/NSU/MyLabs/GITLab/Petrov's GitLab/database-lab/back-end/emscripten_toolchain.cmake -G Ninja -S "D:\NSU\MyLabs\GITLab\Petrov's GitLab\database-lab\back-end" -B "D:\NSU\MyLabs\GITLab\Petrov's GitLab\database-lab\back-end\cmake-build-debug"
+CMake Warning:
+  Ignoring extra path from command line:
+
+   "D:/NSU/MyLabs/GITLab/Petrov's GitLab/database-lab/back-end/cmake-build-debug/GitLab/database-lab/back-end/emscripten_toolchain.cmake"
+
+
+System is unknown to cmake, create:
+Platform/Emscripten to use this system, please post your config file on discourse.cmake.org so it can be added to cmake
+Your CMakeCache.txt file was copied to CopyOfCMakeCache.txt. Please post that file on discourse.cmake.org.
+-- Configuring done (0.2s)
+-- Generating done (0.2s)
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    CMAKE_TOOLCHAIN_FILE
+
+
+-- Build files have been written to: D:/NSU/MyLabs/GITLab/Petrov's GitLab/database-lab/back-end/cmake-build-debug
