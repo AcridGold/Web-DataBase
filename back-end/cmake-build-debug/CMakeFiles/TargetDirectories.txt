@@ -1,3 +1,0 @@
-D:/NSU/MyLabs/GITLab/Petrov's GitLab/database-lab/back-end/cmake-build-debug/CMakeFiles/notebook.dir
-D:/NSU/MyLabs/GITLab/Petrov's GitLab/database-lab/back-end/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/NSU/MyLabs/GITLab/Petrov's GitLab/database-lab/back-end/cmake-build-debug/CMakeFiles/rebuild_cache.dir

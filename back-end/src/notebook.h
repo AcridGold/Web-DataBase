@@ -23,11 +23,16 @@ typedef struct Node {
     struct Node* next;
 } Node;
 
-void add_record(const char* passengerId, int survived, int pclass, const char* name, const char* sex, float age,
+Node* create_list();
+void add_record(Node** head, const char* passengerId, int survived, int pclass, const char* name, const char* sex, float age,
                 int sibSp, int parch, const char* ticket, float fare, const char* cabin, const char* embarked);
-void print_all();
-void find_by_name(const char* name);
-void delete_by_passengerId(const char* passengerId);
+void print_all(Node* head);
+void find_by_name(Node* head, const char* name);
+void delete_by_passengerId(Node** head, const char* passengerId);
+void free_list(Node** head);
+
+void load_from_json(Node** head, const char* json_data);
+char* save_to_json(Node* head);
 
 EMSCRIPTEN_KEEPALIVE
 void add_record_js(const char* passengerId, int survived, int pclass, const char* name, const char* sex, float age,
@@ -41,5 +46,11 @@ void find_by_name_js(const char* name);
 
 EMSCRIPTEN_KEEPALIVE
 void delete_by_passengerId_js(const char* passengerId);
+
+EMSCRIPTEN_KEEPALIVE
+void load_from_json_js(const char* json_data);
+
+EMSCRIPTEN_KEEPALIVE
+char* save_to_json_js();
 
 #endif

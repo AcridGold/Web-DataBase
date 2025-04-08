@@ -1176,6 +1176,8 @@ var _add_record_js = Module['_add_record_js'] = createExportWrapper('add_record_
 var _print_all_js = Module['_print_all_js'] = createExportWrapper('print_all_js', 0);
 var _find_by_name_js = Module['_find_by_name_js'] = createExportWrapper('find_by_name_js', 1);
 var _delete_by_passengerId_js = Module['_delete_by_passengerId_js'] = createExportWrapper('delete_by_passengerId_js', 1);
+var _load_from_json_js = Module['_load_from_json_js'] = createExportWrapper('load_from_json_js', 1);
+var _save_to_json_js = Module['_save_to_json_js'] = createExportWrapper('save_to_json_js', 0);
 var _fflush = createExportWrapper('fflush', 1);
 var _strerror = createExportWrapper('strerror', 1);
 var _emscripten_stack_init = () => (_emscripten_stack_init = wasmExports['emscripten_stack_init'])();

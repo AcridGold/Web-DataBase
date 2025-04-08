@@ -1,0 +1,50 @@
+.App {
+    text-align: center;
+    margin-top: 50px;
+    max-width: 100%; /* Убедимся, что контент не выходит за пределы экрана */
+    overflow-x: hidden; /* Убираем горизонтальную прокрутку */
+}
+
+input, select {
+    margin: 5px 0; /* Вертикальный отступ */
+    padding: 5px;
+    width: 200px; /* Фиксированная ширина для полей */
+    display: block; /* Поля занимают всю ширину контейнера */
+    margin-left: auto; /* Центрируем поля */
+    margin-right: auto;
+}
+
+button {
+    margin: 5px;
+    padding: 5px 10px;
+}
+
+table {
+    margin: 20px auto;
+    border-collapse: collapse;
+    width: 90%; /* Таблица адаптируется к ширине экрана */
+    max-width: 1000px; /* Ограничиваем максимальную ширину таблицы */
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    word-wrap: break-word; /* Перенос текста в ячейках */
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+/* Стили для формы */
+div > div {
+    margin: 10px 0;
+    display: block; /* Убираем flex, элементы будут друг под другом */
+    text-align: center; /* Центрируем содержимое */
+}
+
+label {
+    display: block; /* Метки занимают всю ширину */
+    margin: 5px 0; /* Вертикальный отступ */
+    text-align: center; /* Центрируем текст метки */
+}
