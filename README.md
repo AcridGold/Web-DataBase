@@ -2,8 +2,8 @@
 ---
 WASM: emsdk needed 
 
-Back-end: C
+Back-end: C, Node.JS
 
-Front-end: Node.JS(?) + React.JS
+Front-end: React.JS
 
 > install emsdk -> [emscripten.org](https://emscripten.org/docs/getting_started/downloads.html)
