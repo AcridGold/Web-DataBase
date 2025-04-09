@@ -142,6 +142,16 @@ app.post('/api/records', async (req, res) => {
     }
 });
 
+app.post('/api/records/clear', async (req, res) => {
+    try {
+        await fs.writeFile(recordsFilePath, JSON.stringify([], null, 2));
+        res.json({ message: 'Records cleared successfully' });
+    } catch (error) {
+        console.error('Error clearing records:', error);
+        res.status(500).json({ error: 'Failed to clear records' });
+    }
+});
+
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
 });
