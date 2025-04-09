@@ -2,51 +2,40 @@ import axios from 'axios';
 
 const api = {
     getRecords: async () => {
-        try {
-            const response = await axios.get('http://localhost:5000/api/records');
-            return response.data;
-        } catch (error) {
-            console.error('Error fetching records:', error.message);
-            return [];
-        }
+        const response = await axios.get('http://localhost:5000/api/records');
+        console.log('Response from getRecords:', response.data);
+        return response.data;
     },
-
-    addRecord: async (record) => {
-        try {
-            await axios.post('http://localhost:5000/api/add', record);
-        } catch (error) {
-            console.error('Error adding record:', error.message);
-            throw error;
-        }
-    },
-
-    findRecords: async (name) => {
-        try {
-            const response = await axios.get(`http://localhost:5000/api/find?name=${name}`);
-            return response.data;
-        } catch (error) {
-            console.error('Error finding records:', error.message);
-            return [];
-        }
-    },
-
-    deleteRecord: async (passengerId) => {
-        try {
-            await axios.delete(`http://localhost:5000/api/delete?passengerId=${passengerId}`);
-        } catch (error) {
-            console.error('Error deleting record:', error.message);
-            throw error;
-        }
-    },
-
     saveRecords: async (records) => {
+        console.log('Sending records to save:', records);
+        await axios.post('http://localhost:5000/api/records', records);
+    },
+    addRecord: async (record) => {
+        console.log('Adding record:', record);
+        const response = await axios.post('http://localhost:5000/api/records/add', record);
+        console.log('Response from addRecord:', response.data);
+        return response.data;
+    },
+    updateRecord: async (id, updatedRecord) => {
+        console.log('Updating record with id:', id, 'data:', updatedRecord);
+        const response = await axios.put(`http://localhost:5000/api/records/${id}`, updatedRecord);
+        console.log('Response from updateRecord:', response.data);
+        return response.data;
+    },
+    deleteRecord: async (id) => {
+        console.log('Deleting record with id:', id);
         try {
-            await axios.post('http://localhost:5000/api/records', { data: JSON.stringify(records) });
+            const response = await axios.delete(`http://localhost:5000/api/records/${id}`);
+            console.log('Record deleted successfully:', response.data);
         } catch (error) {
-            console.error('Error saving records:', error.message);
+            console.error('Error in deleteRecord:', error.response?.status, error.response?.data);
             throw error;
         }
-    }
+    },
+    clearRecords: async () => {
+        console.log('Clearing records');
+        await axios.post('http://localhost:5000/api/records/clear');
+    },
 };
 
 export default api;
