@@ -49,6 +49,10 @@ const FileOperations = ({ setRecords }) => {
     };
 
     const clearRecords = async () => {
+        if (!window.confirm('Are you sure you want to clear all records? This action cannot be undone.')) {
+            return;
+        }
+
         console.log('Clearing records');
         try {
             await api.clearRecords();
@@ -134,13 +138,12 @@ const FileOperations = ({ setRecords }) => {
     };
 
     return (
-        <div style={{ margin: '20px 0' }}>
+        <div className="file-operations">
             <h2>File Operations</h2>
-            <button style={{ marginRight: '10px', padding: '8px 16px' }} onClick={loadRecords}>Load from File</button>
-            <button style={{ marginRight: '10px', padding: '8px 16px' }} onClick={clearRecords}>New File</button>
-            <button style={{ marginRight: '10px', padding: '8px 16px' }} onClick={saveRecords}>Save File</button>
-            <button style={{ marginRight: '10px', padding: '8px 16px' }} onClick={openFileExplorer}>Load File</button>
-            <button style={{ marginRight: '10px', padding: '8px 16px' }} onClick={clearRecords}>Clear Records</button>
+            <button onClick={loadRecords}>Load from File</button>
+            <button onClick={saveRecords}>Save File</button>
+            <button onClick={openFileExplorer}>Load File</button>
+            <button className="clear-records" onClick={clearRecords}>Clear Records</button>
             <input
                 type="file"
                 ref={fileInputRef}
