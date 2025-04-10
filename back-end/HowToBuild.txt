@@ -1,6 +1,7 @@
 console app:
 
 1.
+If cmake-build-debug already exists:
 rmdir /S /Q cmake-build-debug
 
 2.
