@@ -16,4 +16,6 @@ Front-end: React.JS
 > starting server and web npm-module required
 ---
 ## Coming next
-User's own web-database
+- User's own web-database
+
+- Auto file transporting (build script)
