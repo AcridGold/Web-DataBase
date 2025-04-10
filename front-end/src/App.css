@@ -1,49 +1,294 @@
+/* Сброс стандартных стилей для единообразия */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Определение цветовых переменных для светлой и тёмной темы */
+:root {
+    --primary-color: #1a73e8; /* Основной синий цвет */
+    --primary-hover: #1557b0; /* Тёмный синий для наведения */
+    --danger-color: #f44336; /* Красный для кнопки "Clear Records" */
+    --danger-hover: #d32f2f; /* Тёмный красный */
+    --background-gradient-start: #e0eafc; /* Начало градиента фона */
+    --background-gradient-end: #cfdef3; /* Конец градиента фона */
+    --container-bg: rgba(255, 255, 255, 0.95); /* Фон контейнера */
+    --text-color: #333; /* Цвет текста */
+    --shadow-color: rgba(0, 0, 0, 0.1); /* Цвет тени */
+    --table-bg: white; /* Фон таблицы */
+    --table-row-even: #f9f9f9; /* Фон чётных строк */
+    --table-row-hover: #f1f1f1; /* Фон строки при наведении */
+}
+
+/* Стили для тёмной темы */
+body.dark-theme {
+    --background-gradient-start: #1a1a1a;
+    --background-gradient-end: #2a2a2a;
+    --container-bg: #333;
+    --text-color: #e0e0e0;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --table-bg: #444;
+    --table-row-even: #3a3a3a;
+    --table-row-hover: #555;
+}
+
+/* Базовые стили для страницы */
+body {
+    font-family: 'Roboto', 'Arial', sans-serif;
+    background: linear-gradient(135deg, var(--background-gradient-start), var(--background-gradient-end));
+    color: var(--text-color);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+/* Контейнер приложения */
 .App {
+    max-width: 1200px;
+    width: 100%;
+    background: var(--container-bg);
+    border-radius: 15px;
+    box-shadow: 0 8px 30px var(--shadow-color);
+    padding: 30px;
+    margin: 20px 0;
+}
+
+/* Заголовки */
+h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
     text-align: center;
-    margin-top: 50px;
-    max-width: 100%;
-    overflow-x: hidden;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
 }
 
-input, select {
-    margin: 5px 0;
-    padding: 5px;
-    width: 200px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+h2 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
 }
 
+/* Стили для кнопок */
 button {
-    margin: 5px;
-    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    margin-right: 10px;
+    margin-bottom: 10px;
 }
 
+button:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow-color);
+    animation: pulse 0.5s infinite;
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+/* Анимация "пульсации" для кнопок */
+@keyframes pulse {
+    0% {
+        transform: translateY(-2px) scale(1);
+    }
+    50% {
+        transform: translateY(-2px) scale(1.03);
+    }
+    100% {
+        transform: translateY(-2px) scale(1);
+    }
+}
+
+/* Кнопка "Clear Records" */
+button.clear-records {
+    background-color: var(--danger-color);
+}
+
+button.clear-records:hover {
+    background-color: var(--danger-hover);
+}
+
+/* Кнопки внутри таблицы */
+table button.edit {
+    background-color: #ff9800;
+}
+
+table button.edit:hover {
+    background-color: #e68900;
+}
+
+table button.delete {
+    background-color: var(--danger-color);
+}
+
+table button.delete:hover {
+    background-color: var(--danger-hover);
+}
+
+/* Контейнер FileOperations */
+.file-operations {
+    background: var(--container-bg);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+/* Анимация появления для контейнера */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Контейнер для таблицы с горизонтальной прокруткой */
+.table-container {
+    width: 100%;
+    overflow-x: auto; /* Горизонтальная прокрутка */
+}
+
+/* Стили для таблицы */
 table {
-    margin: 20px auto;
-    border-collapse: collapse;
-    width: 90%;
-    max-width: 1000px;
+    width: 100%;
+    max-width: 1000px; /* Ограничиваем ширину таблицы */
+    margin: 20px auto; /* Центрируем таблицу */
+    border-collapse: collapse; /* Сливаем границы ячеек */
+    background: var(--table-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    border: 2px solid var(--primary-color); /* Внешняя граница таблицы */
 }
 
 th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    word-wrap: break-word;
+    padding: 15px;
+    text-align: center; /* Центрируем текст в ячейках */
+    border: 1px solid #e0e0e0; /* Внутренние границы ячеек */
+    min-width: 100px; /* Минимальная ширина ячеек */
 }
 
 th {
-    background-color: #f2f2f2;
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-div > div {
-    margin: 10px 0;
-    display: block;
-    text-align: center;
+tr:nth-child(even) {
+    background-color: var(--table-row-even);
 }
 
-label {
-    display: block;
-    margin: 5px 0;
-    text-align: center;
+tr:hover {
+    background-color: var(--table-row-hover);
+    transition: background-color 0.2s ease;
+}
+
+/* Анимация появления строк таблицы */
+tr {
+    animation: slideIn 0.3s ease-in-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Стили для кнопок внутри таблицы */
+table button {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+}
+
+/* Стили для спиннера (индикатора загрузки) */
+.flex {
+    display: flex;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.mb-4 {
+    margin-bottom: 1rem;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .App {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    button {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    table {
+        max-width: 100%;
+        margin: 15px auto;
+    }
+
+    th, td {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    table {
+        font-size: 0.8rem;
+    }
+
+    th, td {
+        padding: 8px;
+        min-width: 80px;
+    }
 }
