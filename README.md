@@ -18,3 +18,5 @@ Front-end: React.JS
 - User's own web-database
 
 - Auto file transporting (build script)
+
+- Add GraphQL support or just SQL
